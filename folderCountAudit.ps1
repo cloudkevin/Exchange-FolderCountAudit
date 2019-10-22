@@ -4,9 +4,8 @@ $i = 0
 
 $Mailboxes = Get-Mailbox
 
-foreach($Mailbox in $Mailboxes)
+$Results = foreach($Mailbox in $Mailboxes)
 {
-   $Results = foreach( $Mailbox in $Mailboxes ){
     $Folders = $MailBox |
         Get-MailboxFolderStatistics |
         Measure-Object |
@@ -17,7 +16,7 @@ foreach($Mailbox in $Mailboxes)
         FolderCount = $Folders
         DisplayName = $Mailbox.DisplayName
         }
-    }
+    
 
    $i++
    Write-Progress -activity "Checking mailboxes" -status "Checked so far: $i of $($Mailboxes.Count)" -percentComplete (($i / $Mailboxes.Count)  * 100)
