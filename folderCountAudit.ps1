@@ -2,7 +2,7 @@ add-pssnapin *exchange* -erroraction SilentlyContinue
 
 $i = 0    
 
-$Mailboxes = Get-Mailbox
+$Mailboxes = Get-Mailbox -ResultSize Unlimited
 
 $Results = foreach($Mailbox in $Mailboxes)
 {
